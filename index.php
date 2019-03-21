@@ -1,6 +1,11 @@
-<?php require_once 'includes/page-start.php' ?>
+<?php
 
-<?php include 'includes/header.php' ?>
+$pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
+
+require_once 'includes/page-start.php';
+include 'includes/header.php' 
+
+?>
 
 <section id="section-jumbo" class="section-background">
   <div class="jumbo">

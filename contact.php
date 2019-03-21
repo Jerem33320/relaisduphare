@@ -1,6 +1,12 @@
-<?php require_once 'includes/page-start.php' ?>
+<?php
 
-<?php include 'includes/header.php' ?>
+$pageTitle = 'Contact | Le Relais du Phare';
+$pageDescription = "Page de contact de l'hotel de phare. Par téléphone, par mail, comme vous voulez !";
+
+require_once 'includes/page-start.php';
+include 'includes/header.php' 
+
+?>
 
 <section id="section-contact" class="section-background">
   <div class="container">
