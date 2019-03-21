@@ -2,6 +2,27 @@
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
+$articles = [
+  [
+    'title' => '30 idées cadeaux pour les voyageurs',
+    'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nobis, porro quos laudantium dolorum nihil, consequuntur nesciunt aliquid at beatae quibusdam quia consequatur minus. Culpa illo dolores dicta itaque porro.',
+    'date' => '5 Mars, 2019',
+    'image' => 'img_1.jpg',
+  ],
+  [
+    'title' => '5 astuces pour rendre votre vol plus confortable',
+    'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio ducimus iusto nam reiciendis recusandae officiis rem pariatur. Corrupti, blanditiis. Adipisci consectetur odio nesciunt cum quis iure cumque, mollitia soluta incidunt.',
+    'date' => '26 Février, 2019',
+    'image' => 'img_2.jpg',
+  ],
+  [
+    'title' => '5 Emplois permettant de gagner de l\'argent en voyageant',
+    'content' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore exercitationem recusandae soluta, temporibus voluptatem, expedita repellendus quod voluptas nulla ipsam quia sint vitae blanditiis dolor illum assumenda quae facilis eos quam aliquid.',
+    'date' => '23 Février, 2019',
+    'image' => 'img_3.jpg',
+  ]
+];
+
 require_once 'includes/page-start.php';
 include 'includes/header.php' 
 
@@ -439,50 +460,11 @@ include 'includes/header.php'
     </header>
 
     <div class="row">
-      <div class="col">
-        <div class="card">
-          <img src="img/img_1.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-date">5 Mars, 2019</p>
-            <h5 class="card-title">30 idées cadeaux pour les voyageurs</h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Excepturi voluptates ipsam beatae ex sint? Bosed ...
-            </p>
-          </div>
+      <?php foreach ($articles as $article): ?>
+        <div class="col">
+          <?php require 'includes/article-card.php' ?>
         </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="img/img_2.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-date">26 Février, 2019</p>
-            <h5 class="card-title">
-              5 astuces pour rendre votre vol plus confortable
-            </h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Fugiat odio, laborum temporibus ...
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card">
-          <img src="img/img_3.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-date">23 Février, 2019</p>
-            <h5 class="card-title">
-              5 Emplois qui vous permettent de gagner de l'argent en
-              voyageant
-            </h5>
-            <p class="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-            </p>
-          </div>
-        </div>
-      </div>
+      <?php endforeach ?>
     </div>
   </div>
 </section>
@@ -535,3 +517,9 @@ include 'includes/header.php'
   require_once 'includes/scripts.php' 
 ?>
 <?php require_once 'includes/page-end.php' ?>
+
+
+
+      
+      
+          
