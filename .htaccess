@@ -1,0 +1,9 @@
+# Suivre les liens symboliques
+Options +FollowSymlinks
+
+# Activation du moteur de réécriture d'URLs
+RewriteEngine On
+
+# Règles de réécriture d'URLs
+RewriteRule blog/article/1 article.php?article=1
+

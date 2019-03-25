@@ -1,5 +1,6 @@
 <?php
 
+require_once '_constants.php';
 require_once '_data.php';
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';

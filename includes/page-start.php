@@ -13,6 +13,8 @@
       <?php echo $pageTitle ?>
     </title>
 
+    <base href="<?= BASE_URL ?>">
+
     <?php include_once 'styles.php' ?>
   </head>
   <body>
