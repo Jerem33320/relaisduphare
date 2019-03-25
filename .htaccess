@@ -5,5 +5,8 @@ Options +FollowSymlinks
 RewriteEngine On
 
 # Règles de réécriture d'URLs
-RewriteRule blog/article/1 article.php?article=1
+RewriteRule ^contactez-nous$ contact.php?lang=fr
+RewriteRule ^contact-us$ contact.php?lang=en
+
+RewriteRule ^blog/article/([0-9]+)$ article.php?article=$1
 

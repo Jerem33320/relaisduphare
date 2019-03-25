@@ -1,6 +1,7 @@
 <?php
 
 require_once '_constants.php';
+require_once '_utils.php';
 require_once '_data.php';
 
 if (
@@ -17,7 +18,7 @@ if (
   exit;
 }
 
-$index = $_GET['article'];
+$index = (int) $_GET['article'];
 $article = $articles[$index];
 
 $pageTitle = $article['title'];
@@ -65,10 +66,18 @@ include 'includes/header.php'
 
   <div class="row">
     <div class="col-lg-2">
-      <a href="">Article précécent</a>
+      <?php if ($index > 0): ?>
+        <a class="btn" href="<?= getArticleURL($index - 1) ?>">
+          Article précécent
+        </a>
+      <?php endif ?>
     </div>
     <div class="col-lg-2 offset-lg-8">
-      <a href="">Article suivant</a>
+      <?php if ($index < count($articles) - 1): ?>
+        <a class="btn" href="<?= getArticleURL($index + 1) ?>">
+          Article suivant
+        </a>
+      <?php endif ?>
     </div>
   </div>
 </section>
