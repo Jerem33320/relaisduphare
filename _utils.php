@@ -28,6 +28,5 @@ function getRoomURL($type, $index) {
     throw new Exception('Invalid parameter for getRoomURL. Must be a numeric value');
   }
 
-  return "room.php?type=$type&number=$index";
-  // return "chambres/$type/$index";
+  return "chambres/$type/$index";
 }

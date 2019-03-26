@@ -9,4 +9,4 @@ RewriteRule ^contactez-nous$ contact.php?lang=fr
 RewriteRule ^contact-us$ contact.php?lang=en
 
 RewriteRule ^blog/article/([0-9]+)$ article.php?article=$1
-
+RewriteRule ^chambres/(standard|premium)/([0-9]+)$ room.php?type=$1&number=$2

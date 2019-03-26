@@ -1,4 +1,4 @@
-<div class="room">
+<a class="room" href="">
   <img src="img/<?= $room['cover'] ?>" alt="" />
   <p class="room-name">
     Chambre <?= $room['type'] ?><span>(<?= $room['options'] ?>)</span>
@@ -11,4 +11,4 @@
       Lit King size (180 cm x 200 cm)
     <?php endif ?>
   </p>
-</div>
+</a>
