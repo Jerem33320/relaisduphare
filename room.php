@@ -13,6 +13,7 @@ if (
   !is_int((int) $_GET['number']) || 
   (int) $_GET['number'] <= 0
 ) {
+  http_response_code(400);
   exit('Error 400: Bad Parameters.');
 }
 
@@ -28,7 +29,9 @@ foreach ($rooms as $room) {
 }
 // on essaye de trouver la chambre demandée
 if (!array_key_exists($number - 1, $typedRooms)) {
-  exit('Error 404 : Room not found.');
+  http_response_code(404);
+  include_once '404.php';
+  exit;
 }
 
 // On stocke la chambre trouvée dans une variable !

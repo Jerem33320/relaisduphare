@@ -611,3 +611,13 @@ footer h6 i {
 .social-link:hover {
   color: #fff;
 }
+
+
+.not-found {
+  text-align: center;
+}
+
+.not-found p {
+  margin-top: 80px;
+  font-size: 20px;
+}

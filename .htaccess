@@ -1,6 +1,5 @@
 # Suivre les liens symboliques
 Options +FollowSymlinks
-
 # Activation du moteur de réécriture d'URLs
 RewriteEngine On
 
@@ -10,3 +9,6 @@ RewriteRule ^contact-us$ contact.php?lang=en
 
 RewriteRule ^blog/article/([0-9]+)$ article.php?article=$1
 RewriteRule ^chambres/(standard|premium)/([0-9]+)$ room.php?type=$1&number=$2
+
+# Gestion des erreurs
+ErrorDocument 404 /fs-relais-du-phare/404.php
