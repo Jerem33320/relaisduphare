@@ -1,5 +1,5 @@
 <div class="card">
-  <img src="img/<?= $article['image'] ?>" class="card-img-top" alt="..." />
+  <img src="public/img/<?= $article['image'] ?>" class="card-img-top" alt="..." />
   <div class="card-body">
     <p class="card-date">
       <?= $article['date'] ?>

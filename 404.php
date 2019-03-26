@@ -1,11 +1,11 @@
 <?php
-require_once '_constants.php';
-require_once '_data.php';
+require_once 'src/_constants.php';
+require_once 'src/_data.php';
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
-require_once 'includes/page-start.php';
-include 'includes/header.php' ;
+require_once 'src/includes/page-start.php';
+include 'src/includes/header.php' ;
 
 ?>
 
@@ -34,13 +34,13 @@ include 'includes/header.php' ;
 </div>
 
 
-<?php include_once 'includes/footer.php' ?>
+<?php include_once 'src/includes/footer.php' ?>
 
 <?php 
-  // require "scripts.php" if it hasn't already been included above 
-  require_once 'includes/scripts.php' 
+  // require "src/scripts.php" if it hasn't already been included above 
+  require_once 'src/includes/scripts.php' 
 ?>
-<?php require_once 'includes/page-end.php' ?>
+<?php require_once 'src/includes/page-end.php' ?>
 
 
 

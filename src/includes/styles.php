@@ -15,6 +15,6 @@
   "
 />
 
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/app.css" />
-<link rel="stylesheet" href="css/slider.css" />
+<link rel="stylesheet" href="public/css/reset.css" />
+<link rel="stylesheet" href="public/css/app.css" />
+<link rel="stylesheet" href="public/css/slider.css" />

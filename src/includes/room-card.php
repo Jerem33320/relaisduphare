@@ -1,5 +1,5 @@
 <a class="room" href="">
-  <img src="img/<?= $room['cover'] ?>" alt="" />
+  <img src="public/img/<?= $room['cover'] ?>" alt="" />
   <p class="room-name">
     Chambre <?= $room['type'] ?><span>(<?= $room['options'] ?>)</span>
   </p>

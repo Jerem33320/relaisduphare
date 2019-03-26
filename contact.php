@@ -1,12 +1,12 @@
 <?php
 
-require_once '_constants.php';
+require_once 'src/_constants.php';
 
 $pageTitle = 'Contact | Le Relais du Phare';
 $pageDescription = "Page de contact de l'hotel de phare. Par téléphone, par mail, comme vous voulez !";
 
-require_once 'includes/page-start.php';
-include 'includes/header.php' 
+require_once 'src/includes/page-start.php';
+include 'src/includes/header.php' 
 
 ?>
 
@@ -49,7 +49,7 @@ include 'includes/header.php'
   </div>
 </section>
 
-<?php include_once 'includes/footer.php' ?>
-<?php require_once 'includes/scripts.php' ?>
-<?php require_once 'includes/page-end.php' ?>
+<?php include_once 'src/includes/footer.php' ?>
+<?php require_once 'src/includes/scripts.php' ?>
+<?php require_once 'src/includes/page-end.php' ?>
     

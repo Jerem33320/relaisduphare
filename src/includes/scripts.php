@@ -4,5 +4,5 @@
   crossorigin="anonymous"
 ></script>
 
-<script src="js/index.js"></script>
-<script src="js/slider.js"></script>
+<script src="public/js/index.js"></script>
+<script src="public/js/slider.js"></script>

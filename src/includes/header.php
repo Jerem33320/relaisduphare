@@ -2,7 +2,7 @@
   <a href="#">Relais du phare</a>
 
   <span
-    >Site pédagogique <img id="logo" src="img/logo-infrep.png" alt=""
+    >Site pédagogique <img id="logo" src="public/img/logo-infrep.png" alt=""
   /></span>
   <!-- <nav id="main-navigation">
     <ul>

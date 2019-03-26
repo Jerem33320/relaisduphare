@@ -1,8 +1,8 @@
 <?php
 
-require_once '_constants.php';
-require_once '_utils.php';
-require_once '_data.php';
+require_once 'src/_constants.php';
+require_once 'src/_utils.php';
+require_once 'src/_data.php';
 
 // Avant d'utiliser les variables contenues $_GET, on doit les vérifier
 if (
@@ -30,7 +30,7 @@ foreach ($rooms as $room) {
 // on essaye de trouver la chambre demandée
 if (!array_key_exists($number - 1, $typedRooms)) {
   http_response_code(404);
-  include_once '404.php';
+  include_once 'src/404.php';
   exit;
 }
 
@@ -43,8 +43,8 @@ $room = $typedRooms[$number - 1];
 // Debut de l'affichage (View)
 $pageTitle = 'Chambre ' . $room['type'] . ' ' . $number;
 
-require_once 'includes/page-start.php';
-include 'includes/header.php' 
+require_once 'src/includes/page-start.php';
+include 'src/includes/header.php' 
 
 ?>
 
@@ -67,7 +67,7 @@ include 'includes/header.php'
       <div class="col-lg-7 offset-lg-1">
         <div class="welcome-img-container">
           <img
-            src="img/img_1.jpg"
+            src="public/img/img_1.jpg"
             alt="Une chambre d'hôtel spacieuse et luxueuse"
           />
         </div>
@@ -101,7 +101,7 @@ include 'includes/header.php'
   </div> <!-- //.container -->
 </section>
 
-<?php include_once 'includes/footer.php' ?>
-<?php require_once 'includes/scripts.php' ?>
-<?php require_once 'includes/page-end.php' ?>
+<?php include_once 'src/includes/footer.php' ?>
+<?php require_once 'src/includes/scripts.php' ?>
+<?php require_once 'src/includes/page-end.php' ?>
     

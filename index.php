@@ -1,11 +1,11 @@
 <?php
-require_once '_constants.php';
-require_once '_data.php';
+require_once 'src/_constants.php';
+require_once 'src/_data.php';
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
-require_once 'includes/page-start.php';
-include 'includes/header.php' ;
+require_once 'src/includes/page-start.php';
+include 'src/includes/header.php' ;
 
 ?>
 
@@ -85,12 +85,12 @@ include 'includes/header.php' ;
       <div class="col-lg-7 offset-lg-1">
         <div class="welcome-img-container">
           <img
-            src="img/img_1.jpg"
+            src="public/img/img_1.jpg"
             alt="Une chambre d'hôtel spacieuse et luxueuse"
           />
           <picture>
             <img
-              src="img/food-1.jpg"
+              src="public/img/food-1.jpg"
               alt="Une femme qui apprécie son repas"
             />
           </picture>
@@ -116,7 +116,7 @@ include 'includes/header.php' ;
       <?php foreach($rooms as $k => $room): ?>
  
         <div class="col-lg-4">
-          <?php include 'includes/room-card.php' ?>
+          <?php include 'src/includes/room-card.php' ?>
         </div>
 
         <?php if ($k % 3 === 2): ?>
@@ -145,12 +145,12 @@ include 'includes/header.php' ;
     <div class="slider-container">
       <div class="slider-arrow"></div>
       <div class="slider">
-        <img src="img/slider-1.jpg" alt="" />
-        <img src="img/slider-2.jpg" alt="" />
-        <img src="img/slider-3.jpg" alt="" />
-        <img src="img/slider-4.jpg" alt="" />
-        <img src="img/slider-5.jpg" alt="" />
-        <img src="img/slider-6.jpg" alt="" />
+        <img src="public/img/slider-1.jpg" alt="" />
+        <img src="public/img/slider-2.jpg" alt="" />
+        <img src="public/img/slider-3.jpg" alt="" />
+        <img src="public/img/slider-4.jpg" alt="" />
+        <img src="public/img/slider-5.jpg" alt="" />
+        <img src="public/img/slider-6.jpg" alt="" />
       </div>
       <div class="slider-arrow"></div>
       <div class="slider-dots"></div>
@@ -411,7 +411,7 @@ include 'includes/header.php' ;
     <div class="row">
       <?php foreach ($articles as $article): ?>
         <div class="col">
-          <?php require 'includes/article-card.php' ?>
+          <?php require 'src/includes/article-card.php' ?>
         </div>
       <?php endforeach ?>
     </div>
@@ -459,13 +459,13 @@ include 'includes/header.php' ;
 </section>
 <!-- //section-contact -->
 
-<?php include_once 'includes/footer.php' ?>
+<?php include_once 'src/includes/footer.php' ?>
 
 <?php 
-  // require "scripts.php" if it hasn't already been included above 
-  require_once 'includes/scripts.php' 
+  // require "src/scripts.php" if it hasn't already been included above 
+  require_once 'src/includes/scripts.php' 
 ?>
-<?php require_once 'includes/page-end.php' ?>
+<?php require_once 'src/includes/page-end.php' ?>
 
 
 

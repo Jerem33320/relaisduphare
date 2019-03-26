@@ -1,8 +1,8 @@
 <?php
 
-require_once '_constants.php';
-require_once '_utils.php';
-require_once '_data.php';
+require_once 'src/_constants.php';
+require_once 'src/_utils.php';
+require_once 'src/_data.php';
 
 if (
   // Verifier qu'on demande une clé non nulle
@@ -24,8 +24,8 @@ $article = $articles[$index];
 $pageTitle = $article['title'];
 // $pageDescription = $article['abstract'];
 
-require_once 'includes/page-start.php';
-include 'includes/header.php' 
+require_once 'src/includes/page-start.php';
+include 'src/includes/header.php' 
 
 ?>
 
@@ -57,7 +57,7 @@ include 'includes/header.php'
     <div class="col-lg-7 offset-lg-1">
       <div class="welcome-img-container">
         <img
-          src="img/img_1.jpg"
+          src="public/img/img_1.jpg"
           alt="Une chambre d'hôtel spacieuse et luxueuse"
         />
       </div>
@@ -82,7 +82,7 @@ include 'includes/header.php'
   </div>
 </section>
 
-<?php include_once 'includes/footer.php' ?>
-<?php require_once 'includes/scripts.php' ?>
-<?php require_once 'includes/page-end.php' ?>
+<?php include_once 'src/includes/footer.php' ?>
+<?php require_once 'src/includes/scripts.php' ?>
+<?php require_once 'src/includes/page-end.php' ?>
     
