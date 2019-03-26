@@ -5,7 +5,7 @@ require_once '_data.php';
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
 require_once 'includes/page-start.php';
-include 'includes/header.php' 
+include 'includes/header.php' ;
 
 ?>
 
@@ -111,53 +111,21 @@ include 'includes/header.php'
         necessitatibus odio adipisci...
       </p>
     </header>
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="room">
-          <img src="img/img_1.jpg" alt="" />
-          <p class="room-name">
-            Chambre Standard <span>(Rez de chaussée)</span>
-          </p>
-          <p class="room-price">98 € / par nuit</p>
-          <p class="room-bed">Lit Queen size (160 cm x 200 cm)</p>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="room">
-          <img src="img/img_2.jpg" alt="" />
-          <p class="room-name">
-            Chambre standard <span>(Balcon ou Fenêtre Arquée)</span>
-          </p>
-          <p class="room-price">120 € / par nuit</p>
-          <p class="room-bed">Lit Queen size (160 cm x 200 cm)</p>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="room">
-          <img src="img/img_3.jpg" alt="" />
-          <p class="room-name">Chambre standard <span>(Terrasse)</span></p>
-          <p class="room-price">130 € / par nuit</p>
-          <p class="room-bed">Lit Queen size (160 cm x 200 cm)</p>
-        </div>
-      </div>
-    </div>
+
     <div class="row justify-content-center">
-      <div class="col-lg-4">
-        <div class="room">
-          <img src="img/slider-5.jpg" alt="" />
-          <p class="room-name">Chambre premium <span>(Balcon)</span></p>
-          <p class="room-price">150 € / par nuit</p>
-          <p class="room-bed">Lit King size (180 cm x 200 cm)</p>
+      <?php foreach($rooms as $k => $room): ?>
+ 
+        <div class="col-lg-4">
+          <?php include 'includes/room-card.php' ?>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="room">
-          <img src="img/slider-7.jpg" alt="" />
-          <p class="room-name">Chambre premium <span>(Terrasse)</span></p>
-          <p class="room-price">170 € / par nuit</p>
-          <p class="room-bed">Lit King size (180 cm x 200 cm)</p>
-        </div>
-      </div>
+
+        <?php if ($k % 3 === 2): ?>
+          </div> <?php // ferme la .row ligne 115 ?>
+          <!-- On ouvre une ligne "centrée" -->
+          <div class="row justify-content-center"> 
+        <?php endif ?>
+
+      <?php endforeach ?>
     </div>
   </div>
 </section>
