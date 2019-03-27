@@ -529,6 +529,7 @@ h1 {
   border: solid 2px #fff;
   background-color: rgba(255,255,255,0.2);
   max-width: 100%;
+  width: 100%;
   margin: 1rem 0;
 } 
 
@@ -539,6 +540,13 @@ h1 {
 
 ::placeholder {
   color: #d4d4d4;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-error {
+  padding: 16px;
+  background-color: rgb(233, 70, 70);
 }
 
 /* -----------------------------------------------------------------------------

@@ -5,6 +5,7 @@
 // et générer les messages appropriés
 // -----------------------------------------------------------------------------
 $errors = [];
+$values = [];
 
 // -----------------------------------------------------------------------------
 // -> valider le nom (non vide, pas de chiffre)
@@ -20,6 +21,8 @@ if (array_key_exists('name', $_POST)) {
     $errors['name'] = 'Le champ "nom" est obligatoire.';
   } elseif (containsDigit($name)) {
     $errors['name'] = 'Le champ "nom" ne doit pas contenir de chiffre.';
+  } else {
+    $values['name'] = $name;
   }
 }
 
@@ -35,6 +38,8 @@ if (array_key_exists('email', $_POST)) {
     $errors['email'] = 'Le champ "E-mail" est obligatoire.';
   } elseif (!isEmailValid($email)) {
     $errors['email'] = 'Le format de l\'email est invalide.';
+  } else {
+    $values['email'] = $email;
   }
 }
 
@@ -48,6 +53,8 @@ if (array_key_exists('phone', $_POST)) {
   // On valide la valeur si elle existe
   if (!empty($phone) && !isPhoneValid($phone)) {
     $errors['phone'] = 'Le format du numéro de téléphone est invalide.';
+  } else {
+    $values['phone'] = $phone;
   }
 }
 
@@ -66,6 +73,8 @@ if (array_key_exists('message', $_POST)) {
     $errors['message'] = 'Le champ "message" est trop court ! (5 mots minimum).';
   } elseif (strlen($message) > 350) {
     $errors['message'] = 'Le champ "message" est trop long ! (350 caractères maximum).';
+  } else {
+    $values['message'] = $message;
   }
 }
 
