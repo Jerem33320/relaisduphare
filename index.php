@@ -5,7 +5,7 @@ require_once 'src/_data.php';
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
 require_once 'src/includes/page-start.php';
-include 'src/includes/header.php' ;
+include 'src/includes/header.php';
 
 ?>
 
@@ -113,13 +113,13 @@ include 'src/includes/header.php' ;
     </header>
 
     <div class="row justify-content-center">
-      <?php foreach($rooms as $k => $room): ?>
+      <?php foreach ($rooms as $k => $room) : ?>
  
         <div class="col-lg-4">
           <?php include 'src/includes/room-card.php' ?>
         </div>
 
-        <?php if ($k % 3 === 2): ?>
+        <?php if ($k % 3 === 2) : ?>
           </div> <?php // ferme la .row ligne 115 ?>
           <!-- On ouvre une ligne "centrée" -->
           <div class="row justify-content-center"> 
@@ -409,7 +409,7 @@ include 'src/includes/header.php' ;
     </header>
 
     <div class="row">
-      <?php foreach ($articles as $article): ?>
+      <?php foreach ($articles as $article) : ?>
         <div class="col">
           <?php require 'src/includes/article-card.php' ?>
         </div>
@@ -424,37 +424,7 @@ include 'src/includes/header.php' ;
     <header>
       <h2>Réservez maintenant</h2>
     </header>
-    <form
-      id="contact-form"
-      name="contact"
-      method="POST"
-      data-netlify="true"
-    >
-      <label for="">Votre Nom</label>
-      <input
-        type="text"
-        name="name"
-        placeholder="ex: Jean Dupond"
-        required
-      />
-      <label for="">Votre E-Mail</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="ex: jeandupond@mail.fr"
-        required
-      />
-      <label for="">Votre Téléphone</label>
-      <input
-        type="phone"
-        name="phone"
-        placeholder="ex: +33 6 00 11 22 33"
-        required
-      />
-      <label for="">Votre message</label>
-      <textarea name="content" required></textarea>
-      <input type="submit" value="Envoyer" class="btn" />
-    </form>
+    <?php include_once 'src/includes/form-contact.php' ?>
   </div>
 </section>
 <!-- //section-contact -->
@@ -463,7 +433,7 @@ include 'src/includes/header.php' ;
 
 <?php 
   // require "src/scripts.php" if it hasn't already been included above 
-  require_once 'src/includes/scripts.php' 
+require_once 'src/includes/scripts.php'
 ?>
 <?php require_once 'src/includes/page-end.php' ?>
 
