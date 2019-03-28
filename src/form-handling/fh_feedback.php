@@ -86,17 +86,18 @@ if (!empty($_POST) && empty($errors)) {
   // Connection à la base de données
   require_once 'src/database/Database.php';
 
+  $query = "INSERT INTO `temoignages` (
+    `name`, `email`, `content`
+    ) VALUES (
+    '" . $values['name'] . "', 
+    '" . $values['email'] . "', 
+    '" . $values['message'] . "'
+    )";
+
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
   $success = (boolean)$database
-    ->query("INSERT INTO `contact_message` (
-      `name`, `email`, `phone`, `message`
-      ) VALUES (
-      '" . $values['name'] . "', 
-      '" . $values['email'] . "', 
-      '" . $values['phone'] . "', 
-      '" . $values['message'] . "'
-      )");
+    ->query($query);
 }
 
 // On reset le formulaire si besoin
