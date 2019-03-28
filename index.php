@@ -346,52 +346,9 @@ include 'src/includes/header.php';
     </header>
 
     <div class="testimonies-slider">
-      <div class="testimony">
-        <img
-          src="http://i.pravatar.cc/150?img=1"
-          alt=""
-          class="testimony-picture"
-        />
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Assumenda impedit est nostrum eaque! Corporis aperiam, omnis
-          quisquam nemo enim qui possimus repudiandae totam, deleniti
-          veritatis iste quia dicta voluptatibus laudantium.
-        </p>
-        <p class="testimony-author">
-          Jean Smith
-        </p>
-      </div>
-      <div class="testimony">
-        <img
-          src="http://i.pravatar.cc/150?img=32"
-          alt=""
-          class="testimony-picture"
-        />
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Doloribus enim natus consectetur accusamus!
-        </p>
-        <p class="testimony-author">
-          John Doe
-        </p>
-      </div>
-      <div class="testimony">
-        <img
-          src="http://i.pravatar.cc/150?img=68"
-          alt=""
-          class="testimony-picture"
-        />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-          quos quisquam, tenetur id, praesentium delectus non laborum quia
-          quo optio eveniet expedita, quidem magni quas. Soluta autem
-          deleniti labore perferendis!
-        </p>
-        <p class="testimony-author">
-          Jack Dan
-        </p>
-      </div>
+      <?php foreach ($feedbacks as $testimony) : ?>
+        <?php include 'src/includes/testimony.php' ?>
+      <?php endforeach ?>
     </div>
   </div>
 </section>
