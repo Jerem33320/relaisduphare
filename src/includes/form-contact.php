@@ -5,7 +5,7 @@ require_once 'src/form-handling/fh_contact.php';
 <form
   id="contact-form"
   method="POST"
-  action="contact.php"
+  action=""
 >
   <?php if (!empty($success)) : ?>
   <div class="alert form-success" style="text-align: center;">

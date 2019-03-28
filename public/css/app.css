@@ -544,9 +544,21 @@ textarea {
 .form-group {
   margin-bottom: 20px;
 }
+
 .form-error {
+  color: #fff;
   padding: 16px;
   background-color: rgb(233, 70, 70);
+}
+
+.form-success {
+  background-color: #67d36d;
+}
+
+.alert {
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 16px;
 }
 
 /* -----------------------------------------------------------------------------
