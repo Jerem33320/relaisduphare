@@ -4,13 +4,14 @@ require_once 'src/_constants.php';
 require_once 'src/_utils.php';
 require_once 'src/_data.php';
 
+
+
 if (
   // Verifier qu'on demande une clé non nulle
-  !array_key_exists('article', $_GET) ||
+!array_key_exists('article', $_GET) ||
   !isset($_GET['article']) ||
   // Verifier que la clé demandée existe dans le tableau des articles
-  !array_key_exists($_GET['article'], $articles)
-) {
+!array_key_exists($_GET['article'], $articles)) {
   exit("404: Article introuvable !");
   
   // ou sinon rediriger vers une autre adresse
@@ -18,20 +19,20 @@ if (
   exit;
 }
 
-$index = (int) $_GET['article'];
+$index = (int)$_GET['article'];
 $article = $articles[$index];
 
 $pageTitle = $article['title'];
 // $pageDescription = $article['abstract'];
 
 require_once 'src/includes/page-start.php';
-include 'src/includes/header.php' 
+include 'src/includes/header.php'
 
 ?>
 
 <section 
   class="section-background" 
-  style="background-image: url(img/<?= $article['image']?>); background-size: cover"
+  style="background-image: url(img/<?= $article['image'] ?>); background-size: cover"
 >
   <div class="container">
     <header>
@@ -40,6 +41,10 @@ include 'src/includes/header.php'
       </h1>
     </header>
   </div>
+</section>
+
+<section>
+  <?php include 'src/includes/form-contact.php' ?>
 </section>
 
 <section>
@@ -66,14 +71,14 @@ include 'src/includes/header.php'
 
   <div class="row">
     <div class="col-lg-2">
-      <?php if ($index > 0): ?>
+      <?php if ($index > 0) : ?>
         <a class="btn" href="<?= getArticleURL($index - 1) ?>">
           Article précécent
         </a>
       <?php endif ?>
     </div>
     <div class="col-lg-2 offset-lg-8">
-      <?php if ($index < count($articles) - 1): ?>
+      <?php if ($index < count($articles) - 1) : ?>
         <a class="btn" href="<?= getArticleURL($index + 1) ?>">
           Article suivant
         </a>

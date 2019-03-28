@@ -1,13 +1,18 @@
-<?php // couche modèle ?>
-<?php require_once 'src/form-handling/fh_contact.php' ?>
+<?php 
+require_once 'src/form-handling/fh_contact.php';
+?>
 
-<?php // couche vue ?>
 <form
   id="contact-form"
   method="POST"
   action="contact.php"
 >
+  <?php if (!empty($success)) : ?>
+  <div class="alert form-success" style="text-align: center;">
+    Le formulaire a bien été envoyé !
+  </div>
 
+  <?php endif ?>
   <?php if (!empty($errors)) : ?>
   <div class="alert form-error" style="text-align: center;">
     Le formulaire contient des erreurs !

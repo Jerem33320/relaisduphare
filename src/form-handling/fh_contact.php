@@ -6,6 +6,7 @@
 // -----------------------------------------------------------------------------
 $errors = [];
 $values = [];
+$success = false;
 
 // -----------------------------------------------------------------------------
 // -> valider le nom (non vide, pas de chiffre)
@@ -78,6 +79,27 @@ if (array_key_exists('message', $_POST)) {
   }
 }
 
-// (TODO) Si pas d'erreur, on enregistre le message de contact en Base De Données
+// Si on a envoyé des données et qu'il n'y a pas d'erreur, 
+// on enregistre le message de contact en Base De Données
+if (!empty($_POST) && empty($errors)) {
 
+  // Connection à la base de données
+  require_once 'src/database/Database.php';
 
+  // On essaye d'insérer les données en BDD
+  // et on stocke le résultat (true | false) dans une variable 
+  $success = (boolean)$database
+    ->query("INSERT INTO `contact_message` (
+      `name`, `email`, `phone`, `message`
+      ) VALUES (
+      '" . $values['name'] . "', 
+      '" . $values['email'] . "', 
+      '" . $values['phone'] . "', 
+      '" . $values['message'] . "'
+      )");
+}
+
+// On reset le formulaire si besoin
+if ($success) {
+  $values = [];
+}

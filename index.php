@@ -116,7 +116,7 @@ include 'src/includes/header.php';
       <?php foreach ($rooms as $k => $room) : ?>
  
         <div class="col-lg-4">
-          <?php include 'src/includes/room-card.php' ?>
+          <?php require 'src/includes/room-card.php' ?>
         </div>
 
         <?php if ($k % 3 === 2) : ?>

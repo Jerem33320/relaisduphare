@@ -1,13 +1,17 @@
 <?php
 
+
+
 require_once 'src/_constants.php';
 require_once 'src/_utils.php';
 
 $pageTitle = 'Contact | Le Relais du Phare';
 $pageDescription = "Page de contact de l'hotel de phare. Par téléphone, par mail, comme vous voulez !";
 
+require_once 'src/form-handling/fh_contact.php';
+
 require_once 'src/includes/page-start.php';
-include 'src/includes/header.php' 
+include 'src/includes/header.php'
 
 ?>
 
