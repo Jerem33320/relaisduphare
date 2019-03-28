@@ -88,15 +88,16 @@ if (!empty($_POST) && empty($errors)) {
 
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
-  $success = (boolean)$database
-    ->query("INSERT INTO `contact_message` (
-      `name`, `email`, `phone`, `message`
-      ) VALUES (
-      '" . $values['name'] . "', 
-      '" . $values['email'] . "', 
-      '" . $values['phone'] . "', 
-      '" . $values['message'] . "'
-      )");
+  $sql = "INSERT INTO `contact_message` (
+    `name`, `email`, `phone`, `message`
+    ) VALUES (
+    '" . $values['name'] . "', 
+    '" . $values['email'] . "', 
+    '" . $values['phone'] . "', 
+    '" . $values['message'] . "'
+    )";
+
+  $success = (boolean)$database->query($sql);
 }
 
 // On reset le formulaire si besoin

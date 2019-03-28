@@ -96,8 +96,17 @@ if (!empty($_POST) && empty($errors)) {
 
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
-  $success = (boolean)$database
-    ->query($query);
+  try {
+    $success = (boolean)$database->query($query);
+  } catch (PDOException $e) {
+    $code = $e->getCode();
+
+    switch ($code) {
+      case '23000':
+        $errors['email'] = 'Cet email est déjà utilisé !';
+        break;
+    }
+  }
 }
 
 // On reset le formulaire si besoin
