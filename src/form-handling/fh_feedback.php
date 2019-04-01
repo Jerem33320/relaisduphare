@@ -15,7 +15,7 @@ $success = false;
 // On vérifie que la clé existe AVANT de valider la valeur
 if (array_key_exists('name', $_POST)) {
 
-  $name = trim($_POST['name']);
+  $name = addslashes(trim($_POST['name']));
   
   // On valide la valeur
   if (empty($name)) {
@@ -32,7 +32,7 @@ if (array_key_exists('name', $_POST)) {
 // -----------------------------------------------------------------------------
 if (array_key_exists('email', $_POST)) {
 
-  $email = trim($_POST['email']);
+  $email = addslashes(trim($_POST['email']));
   
   // On valide la valeur
   if (empty($email)) {
@@ -49,7 +49,7 @@ if (array_key_exists('email', $_POST)) {
 // -----------------------------------------------------------------------------
 if (array_key_exists('phone', $_POST)) {
 
-  $phone = trim($_POST['phone']);
+  $phone = addslashes(trim($_POST['phone']));
   
   // On valide la valeur si elle existe
   if (!empty($phone) && !isPhoneValid($phone)) {
@@ -65,12 +65,12 @@ if (array_key_exists('phone', $_POST)) {
 // -----------------------------------------------------------------------------
 if (array_key_exists('message', $_POST)) {
 
-  $message = trim($_POST['message']);
-  
+  $message = addslashes(trim($_POST['message']));
+
   // On valide la valeur
   if (empty($message)) {
     $errors['message'] = 'Le champ "message" est obligatoire.';
-  } elseif (str_word_count($message) < 5) {
+  } elseif (str_word_count($message) < 1) {
     $errors['message'] = 'Le champ "message" est trop court ! (5 mots minimum).';
   } elseif (strlen($message) > 350) {
     $errors['message'] = 'Le champ "message" est trop long ! (350 caractères maximum).';

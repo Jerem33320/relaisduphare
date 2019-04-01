@@ -89,25 +89,27 @@ $rooms = [
   ],
 ];
 
-$feedbacks = [
-  [
-    "avatar" => "http://i.pravatar.cc/150?img=1",
-    "name" => "Jean Smith",
-    "content" => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Assumenda impedit est nostrum eaque! Corporis aperiam, omnis
-          quisquam nemo enim qui possimus repudiandae totam, deleniti
-          veritatis iste quia dicta voluptatibus laudantium.",
-  ], [
-    "avatar" => "http://i.pravatar.cc/150?img=32",
-    "name" => "John Doe",
-    "content" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Doloribus enim natus consectetur accusamus!"
-  ], [
-    "avatar" => "http://i.pravatar.cc/150?img=68",
-    "name" => "Jack Dan",
-    "content" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-          quos quisquam, tenetur id, praesentium delectus non laborum quia
-          quo optio eveniet expedita, quidem magni quas. Soluta autem
-          deleniti labore perferendis!"
-  ]
-];
+// $feedbacks = [
+//   [
+//     "avatar" => "http://i.pravatar.cc/150?img=1",
+//     "name" => "Jean Smith",
+//     "content" => "Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+//           Assumenda impedit est nostrum eaque! Corporis aperiam, omnis
+//           quisquam nemo enim qui possimus repudiandae totam, deleniti
+//           veritatis iste quia dicta voluptatibus laudantium.",
+//   ], [
+//     "avatar" => "http://i.pravatar.cc/150?img=32",
+//     "name" => "John Doe",
+//     "content" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+//           Doloribus enim natus consectetur accusamus!"
+//   ], [
+//     "avatar" => "http://i.pravatar.cc/150?img=68",
+//     "name" => "Jack Dan",
+//     "content" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+//           quos quisquam, tenetur id, praesentium delectus non laborum quia
+//           quo optio eveniet expedita, quidem magni quas. Soluta autem
+//           deleniti labore perferendis!"
+//   ]
+// ];
+
+$feedbacks = $database->query('SELECT * FROM temoignages')->fetchAll();

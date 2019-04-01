@@ -1,13 +1,14 @@
 <div class="testimony">
   <img
-    src="<?= $testimony['avatar'] ?>"
+    src="<?= htmlspecialchars($testimony['avatar']) ?>"
     alt="avatar"
     class="testimony-picture"
   />
+
   <p>
-    <?= $testimony['content'] ?>
+    <?= htmlspecialchars($testimony['content']) ?>
   </p>
   <p class="testimony-author">
-    <?= $testimony['name'] ?>
+    <?= htmlspecialchars($testimony['name']) ?>
   </p>
 </div>
