@@ -60,28 +60,29 @@ if (array_key_exists('message', $_POST)) {
 // on enregistre le message de contact en Base De Données
 if (!empty($_POST) && empty($errors)) {
 
-  // Connection à la base de données
   require_once 'src/database/Database.php';
-
-  $query = "INSERT INTO `temoignages` (
-    `name`, `email`, `content`
-    ) VALUES (
-    '" . $review->getAuthor() . "', 
-    '" . $review->getEmail() . "', 
-    '" . $review->getMessage() . "'
-    )";
-
+  require_once 'src/database/Query.php';
+  
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
   try {
-    $success = (boolean)$database->query($query);
+
+    $query = new Query($database);
+    $success = $query->create($review);
+
   } catch (PDOException $e) {
+
     $code = $e->getCode();
 
     switch ($code) {
+      // Si l'erreur est une "duplicate entry"
       case '23000':
         $errors['email'] = 'Cet email est déjà utilisé !';
         break;
+
+      // Sinon on relance l'erreur
+      default:
+        throw $e;
     }
   }
 }

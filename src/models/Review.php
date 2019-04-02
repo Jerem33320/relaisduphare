@@ -6,7 +6,7 @@ class Review
   private $author;
   private $email;
   private $message;
-  private $mark;
+  private $mark = 5;
   private $createdAt;
 
   public function setAuthor($name)

@@ -29,8 +29,22 @@ class Query
     return $this->run($sql);
   }
 
-  public function create()
+  public function create(Review $review)
   {
+    $sql = "INSERT INTO `temoignages` (`name`, `email`, `content`, mark) 
+    VALUES (:name, :email, :content, :mark)";
+
+    // on prépare la requête avec l'object PDO
+    $statement = $this->database->getPDO()->prepare($sql);
+
+    // on associe les paramètres aux attributs du modèle
+    $statement->bindValue(':name', $review->getAuthor());
+    $statement->bindValue(':email', $review->getEmail());
+    $statement->bindValue(':content', $review->getMessage());
+    $statement->bindValue(':mark', $review->getMark());
+
+    // Finalement, on peut exécuter la requête
+    return $statement->execute();
   }
 
   private function run(string $sql)
