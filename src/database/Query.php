@@ -14,7 +14,27 @@ class Query
   public function findAll()
   {
     $sql = "SELECT * FROM temoignages";
+    return $this->run($sql);
+  }
 
+  public function findRandom(int $take)
+  {
+    $sql = "SELECT * FROM temoignages ORDER BY RAND() LIMIT $take";
+    return $this->run($sql);
+  }
+
+  public function findBestMarks(int $take)
+  {
+    $sql = "SELECT * FROM temoignages ORDER BY mark DESC, RAND() LIMIT $take";
+    return $this->run($sql);
+  }
+
+  public function create()
+  {
+  }
+
+  private function run(string $sql)
+  {
     $data = $this
       ->database
       ->query($sql)
@@ -24,27 +44,27 @@ class Query
 
     // On map les objets "à la main", 
     // car les structures ne correspondent pas
+    return $this->map($data);
+  }
+
+  private function map($data)
+  {
     $reviews = [];
     foreach ($data as $row) {
-      $review = new Review();
-      $review
-        ->setId($row['id'])
-        ->setEmail($row['email'])
-        ->setMark($row['mark'])
-        ->setAuthor($row['name'])
-        ->setMessage($row['content']);
-
-      $reviews[] = $review;
+      $reviews[] = $this->hydrate(new Review(), $row);
     }
-
     return $reviews;
   }
 
-  public function findRandom()
+  private function hydrate(Review $review, array $row)
   {
-  }
+    $review
+      ->setId($row['id'])
+      ->setEmail($row['email'])
+      ->setMark($row['mark'])
+      ->setAuthor($row['name'])
+      ->setMessage($row['content']);
 
-  public function create()
-  {
+    return $review;
   }
 }

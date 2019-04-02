@@ -6,6 +6,9 @@
     class="testimony-picture"
   />
 
+<p>
+  <?= $review->getMark() ?>
+</p>
   <p>
     <?= htmlspecialchars($review->getMessage()) ?>
   </p>
