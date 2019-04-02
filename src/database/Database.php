@@ -43,7 +43,7 @@ class Database
   }
 }
 
-$database = new Database('relais-du-phare', 'root', '', 'localhost:8889');
+$database = new Database('relais-du-phare', 'root', '');
 
 
 

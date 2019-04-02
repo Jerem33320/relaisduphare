@@ -25,7 +25,7 @@ require_once 'src/form-handling/fh_feedback.php';
       type="text"
       name="name"
       placeholder="ex: Jean Dupond"
-      value="<?= array_key_exists('name', $values) ? $values['name'] : '' ?>"
+      value="<?= $review->getAuthor() ?>"
     />
     <?php if (array_key_exists('name', $errors)) : ?>
       <div class="form-error">
@@ -40,7 +40,7 @@ require_once 'src/form-handling/fh_feedback.php';
     type="email"
     name="email"
     placeholder="ex: jeandupond@mail.fr"
-    value="<?= array_key_exists('email', $values) ? $values['email'] : '' ?>"
+    value="<?= $review->getEmail() ?>"
     />
     <?php if (array_key_exists('email', $errors)) : ?>
       <div class="form-error">
@@ -51,7 +51,7 @@ require_once 'src/form-handling/fh_feedback.php';
 
   <div class="form-group">
     <label for="">Votre message</label>
-    <textarea name="message"><?= array_key_exists('message', $values) ? $values['message'] : '' ?></textarea>
+    <textarea name="message"><?= $review->getMessage() ?></textarea>
 
     <?php if (array_key_exists('message', $errors)) : ?>
       <div class="form-error">
