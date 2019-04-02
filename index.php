@@ -1,10 +1,16 @@
 <?php
 
 require_once 'src/_constants.php';
+require_once 'src/_utils.php';
+
 require_once 'src/database/Database.php';
+require_once 'src/database/Query.php';
 require_once 'src/_data.php';
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
+
+$query = new Query($database);
+$reviews = $query->findAll();
 
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php';
@@ -348,8 +354,8 @@ include 'src/includes/header.php';
     </header>
 
     <div class="testimonies-slider">
-      <?php foreach ($feedbacks as $testimony) : ?>
-        <?php include 'src/includes/testimony.php' ?>
+      <?php foreach ($reviews as $review) : ?>
+        <?php include 'src/includes/review.php' ?>
       <?php endforeach ?>
     </div>
   </div>

@@ -2,6 +2,7 @@
 
 class Review
 {
+  private $id;
   private $author;
   private $email;
   private $message;
@@ -48,7 +49,7 @@ class Review
 
     if (empty($message)) {
       throw new Exception('Le champ "message" est obligatoire.');
-    } elseif (str_word_count($message) < 5) {
+    } elseif (str_word_count($message) < 1) {
       throw new Exception('Le champ "message" est trop court ! (5 mots minimum).');
     } elseif (strlen($message) > 350) {
       throw new Exception('Le champ "message" est trop long ! (350 caractères maximum).');
@@ -133,6 +134,30 @@ class Review
 
     $this->email = $email;
 
+    return $this;
+  }
+
+  public function getAvatar()
+  {
+    return 'http://i.pravatar.cc/48?img=' . $this->id;
+  }
+
+  /**
+   * Get the value of id
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  /**
+   * Set the value of id
+   *
+   * @return  self
+   */
+  public function setId($id)
+  {
+    $this->id = $id;
     return $this;
   }
 }
