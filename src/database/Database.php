@@ -107,4 +107,4 @@ class Database
   }
 }
 
-
+Database::getInstance('relais-du-phare', 'root', '');

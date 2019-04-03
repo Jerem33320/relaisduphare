@@ -9,8 +9,7 @@ require_once 'src/_data.php';
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
-$query = new Query($database);
-$reviews = $query->findBestMarks(3);
+$reviews = Query::findBestMarks(3);
 
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php';

@@ -66,9 +66,7 @@ if (!empty($_POST) && empty($errors)) {
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
   try {
-
-    $query = new Query($database);
-    $success = $query->create($review);
+    $success = Query::create($review);
 
   } catch (PDOException $e) {
 
