@@ -25,8 +25,22 @@ class Query
 
   public static function findById(int $id)
   {
-    if ($id === 0) return null;
-    return new Review();
+    $sql = "SELECT * FROM temoignages WHERE id=:id";
+
+    $statement = Database::getInstance()->getPDO()->prepare($sql);
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+
+    // Si les champs de la DB correspondent au modèle Review
+    // $statement->setFetchMode(PDO::FETCH_CLASS, Review::class);
+    // $data = $statement->fetch();
+
+    // Si les champs ne correspondent pas, on doit mapper à la main
+    $data = $statement->fetch(PDO::FETCH_ASSOC);
+    if (empty($data)) return null;
+
+    $review = self::hydrate(new Review(), $data);
+    return $review;
   }
 
   public static function create(Review $review)

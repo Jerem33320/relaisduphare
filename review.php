@@ -2,6 +2,7 @@
 
 require_once 'src/_constants.php';
 require_once 'src/_utils.php';
+require_once 'src/database/Database.php';
 require_once 'src/database/Query.php';
 
 if (isset($_GET['id'])) {
