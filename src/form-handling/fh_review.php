@@ -58,13 +58,15 @@ if (array_key_exists('message', $_POST)) {
 // on enregistre le message de contact en Base De Données
 if (!empty($_POST) && empty($errors)) {
 
-  require_once 'src/database/Database.php';
-  require_once 'src/database/Query.php';
-  
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
   try {
-    $success = Query::create($review);
+
+    if (isset($_GET['id'])) {
+      $success = Query::update($review);
+    } else {
+      $success = Query::create($review);
+    }
 
   } catch (PDOException $e) {
 
@@ -84,6 +86,6 @@ if (!empty($_POST) && empty($errors)) {
 }
 
 // On reset le formulaire si besoin
-if ($success) {
+if ($success && !isset($_GET['id'])) {
   $review = new Review();
 }

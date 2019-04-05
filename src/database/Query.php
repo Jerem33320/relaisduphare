@@ -63,6 +63,24 @@ class Query
     return $statement->execute();
   }
 
+  public static function update(Review $review)
+  {
+    $sql = "UPDATE `temoignages` SET name=:name,email=:email,mark=:mark,content=:content WHERE id=:id";
+
+    // on prépare la requête avec l'object PDO
+    $statement = Database::getInstance()->getPDO()->prepare($sql);
+
+    // on associe les paramètres aux attributs du modèle
+    $statement->bindValue(':name', $review->getAuthor());
+    $statement->bindValue(':email', $review->getEmail());
+    $statement->bindValue(':mark', $review->getMark());
+    $statement->bindValue(':content', $review->getMessage());
+    $statement->bindValue(':id', $review->getId());
+
+    // Finalement, on peut exécuter la requête
+    return $statement->execute();
+  }
+
   private static function run(string $sql)
   {
     $data = Database::getInstance()
