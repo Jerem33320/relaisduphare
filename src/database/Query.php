@@ -23,6 +23,12 @@ class Query
     return self::run($sql);
   }
 
+  public static function findById(int $id)
+  {
+    if ($id === 0) return null;
+    return new Review();
+  }
+
   public static function create(Review $review)
   {
     $sql = "INSERT INTO `temoignages` (`name`, `email`, `content`, mark) 

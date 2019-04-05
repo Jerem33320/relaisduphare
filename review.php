@@ -2,9 +2,23 @@
 
 require_once 'src/_constants.php';
 require_once 'src/_utils.php';
+require_once 'src/database/Query.php';
 
-$pageTitle = 'Créer un témoignage | Le Relais du Phare';
-$pageDescription = "Votre séjour vous a plu ? Laissez nous un petit commentaire :)";
+if (isset($_GET['id'])) {
+  // "mode" mise à jour d'une Review
+  $review = Query::findById($_GET['id']);
+  if (empty($review)) {
+    http_response_code(404);
+    include_once '404.php';
+    exit;
+  }
+
+  $pageTitle = "Modifier le témoignage #" . $_GET['id'];
+} else {
+  // "mode" création de Review
+  $pageTitle = 'Créer un témoignage | Le Relais du Phare';
+  $pageDescription = "Votre séjour vous a plu ? Laissez nous un petit commentaire :)";
+}
 
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php'
