@@ -4,12 +4,12 @@ require_once 'src/_constants.php';
 require_once 'src/_utils.php';
 
 require_once 'src/database/Database.php';
-require_once 'src/database/Query.php';
+require_once 'src/database/ReviewQuery.php';
 require_once 'src/_data.php';
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 
-$reviews = Query::findBestMarks(3);
+$reviews = ReviewQuery::findBestMarks(3);
 
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php';

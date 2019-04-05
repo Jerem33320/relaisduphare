@@ -1,31 +1,24 @@
 <?php
 
-require_once 'src/models/Review.php';
-
 class Query
 {
-
   public static function findAll()
   {
-    $sql = "SELECT * FROM temoignages";
+    // static::TABLE et non pas self::TABLE !!!!
+    // @see https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php/1666684-lheritage#/id/r-1666683
+    $sql = "SELECT * FROM " . static::TABLE;
     return self::run($sql);
   }
 
   public static function findRandom(int $take)
   {
-    $sql = "SELECT * FROM temoignages ORDER BY RAND() LIMIT $take";
-    return self::run($sql);
-  }
-
-  public static function findBestMarks(int $take)
-  {
-    $sql = "SELECT * FROM temoignages ORDER BY mark DESC, RAND() LIMIT $take";
+    $sql = "SELECT * FROM " . self::TABLE . " ORDER BY RAND() LIMIT $take";
     return self::run($sql);
   }
 
   public static function findById(int $id)
   {
-    $sql = "SELECT * FROM temoignages WHERE id=:id";
+    $sql = "SELECT * FROM " . static::TABLE . " WHERE id=:id";
 
     $statement = Database::getInstance()->getPDO()->prepare($sql);
     $statement->bindValue(':id', $id);
@@ -39,49 +32,12 @@ class Query
     $data = $statement->fetch(PDO::FETCH_ASSOC);
     if (empty($data)) return null;
 
-    $review = self::hydrate(new Review(), $data);
+    $model = static::MODEL;
+    $review = $model::hydrate($data);
     return $review;
   }
 
-  public static function create(Review $review)
-  {
-    $sql = "INSERT INTO `temoignages` (`name`, `email`, `content`, mark) 
-    VALUES (:name, :email, :content, :mark)";
-
-    // on prépare la requête avec l'object PDO
-    // $statement = $this->database->getPDO()->prepare($sql);
-
-    $statement = Database::getInstance()->getPDO()->prepare($sql);
-
-    // on associe les paramètres aux attributs du modèle
-    $statement->bindValue(':name', $review->getAuthor());
-    $statement->bindValue(':email', $review->getEmail());
-    $statement->bindValue(':content', $review->getMessage());
-    $statement->bindValue(':mark', $review->getMark());
-
-    // Finalement, on peut exécuter la requête
-    return $statement->execute();
-  }
-
-  public static function update(Review $review)
-  {
-    $sql = "UPDATE `temoignages` SET name=:name,email=:email,mark=:mark,content=:content WHERE id=:id";
-
-    // on prépare la requête avec l'object PDO
-    $statement = Database::getInstance()->getPDO()->prepare($sql);
-
-    // on associe les paramètres aux attributs du modèle
-    $statement->bindValue(':name', $review->getAuthor());
-    $statement->bindValue(':email', $review->getEmail());
-    $statement->bindValue(':mark', $review->getMark());
-    $statement->bindValue(':content', $review->getMessage());
-    $statement->bindValue(':id', $review->getId());
-
-    // Finalement, on peut exécuter la requête
-    return $statement->execute();
-  }
-
-  private static function run(string $sql)
+  protected static function run(string $sql)
   {
     $data = Database::getInstance()
       ->query($sql)
@@ -94,14 +50,14 @@ class Query
     return self::map($data);
   }
 
-  private static function map($data)
+  protected static function map($data)
   {
+    $model = static::MODEL;
+
     $reviews = [];
     foreach ($data as $row) {
-      $reviews[] = Review::hydrate($row);
+      $reviews[] = $model::hydrate($row);
     }
     return $reviews;
   }
-
-
 }

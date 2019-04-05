@@ -63,9 +63,9 @@ if (!empty($_POST) && empty($errors)) {
   try {
 
     if (isset($_GET['id'])) {
-      $success = Query::update($review);
+      $success = ReviewQuery::update($review);
     } else {
-      $success = Query::create($review);
+      $success = ReviewQuery::create($review);
     }
 
   } catch (PDOException $e) {

@@ -21,7 +21,6 @@ class Review extends Model
    */
   public static function hydrate(array $data)
   {
-
     $review = new Review();
 
     $review

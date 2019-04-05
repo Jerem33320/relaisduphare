@@ -3,11 +3,11 @@
 require_once 'src/_constants.php';
 require_once 'src/_utils.php';
 require_once 'src/database/Database.php';
-require_once 'src/database/Query.php';
+require_once 'src/database/ReviewQuery.php';
 
 if (isset($_GET['id'])) {
   // "mode" mise à jour d'une Review
-  $review = Query::findById($_GET['id']);
+  $review = ReviewQuery::findById($_GET['id']);
 
   if (empty($review)) {
     http_response_code(404);
