@@ -10,8 +10,6 @@ require_once 'src/models/Review.php';
 $errors = [];
 $success = false;
 
-$review = new Review();
-
 // -----------------------------------------------------------------------------
 // -> valider le nom (non vide, pas de chiffre)
 // -----------------------------------------------------------------------------
