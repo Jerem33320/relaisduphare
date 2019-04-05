@@ -11,7 +11,7 @@ class Review
 
   public function setAuthor($name)
   {
-    $name = addslashes(trim($name));
+    $name = trim($name);
 
     if (empty($name)) {
       throw new Exception('Le champ "nom" est obligatoire.');
@@ -44,8 +44,7 @@ class Review
    */
   public function setMessage($message)
   {
-
-    $message = addslashes(trim($message));
+    $message = trim($message);
 
     if (empty($message)) {
       throw new Exception('Le champ "message" est obligatoire.');
@@ -124,7 +123,7 @@ class Review
    */
   public function setEmail($email)
   {
-    $email = addslashes(trim($email));
+    $email = trim($email);
 
     if (empty($email)) {
       throw new Exception('Le champ "E-mail" est obligatoire.');
