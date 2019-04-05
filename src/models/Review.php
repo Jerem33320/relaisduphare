@@ -9,6 +9,31 @@ class Review
   private $mark = 5;
   private $createdAt;
 
+  /**
+   * Factory method
+   *
+   * Crée une nouvelle instance de Review, et la "remplit" avec les données 
+   * envoyées en paramètres
+   * On appelle ce process l'hydratation.
+   * 
+   * @param array $data un tableau de données à utiliser pour hydrater l'instance
+   * @return Review la nouvelle instance hydratée
+   */
+  public static function hydrate(array $data)
+  {
+
+    $review = new Review();
+
+    $review
+      ->setId($data['id'])
+      ->setEmail($data['email'])
+      ->setMark($data['mark'])
+      ->setAuthor($data['name'])
+      ->setMessage($data['content']);
+
+    return $review;
+  }
+
   public function setAuthor($name)
   {
     $name = trim($name);

@@ -98,20 +98,10 @@ class Query
   {
     $reviews = [];
     foreach ($data as $row) {
-      $reviews[] = self::hydrate(new Review(), $row);
+      $reviews[] = Review::hydrate($row);
     }
     return $reviews;
   }
 
-  private static function hydrate(Review $review, array $row)
-  {
-    $review
-      ->setId($row['id'])
-      ->setEmail($row['email'])
-      ->setMark($row['mark'])
-      ->setAuthor($row['name'])
-      ->setMessage($row['content']);
 
-    return $review;
-  }
 }
