@@ -1,6 +1,8 @@
 <?php
 
-class Room {
+require_once 'src/models/Model.php';
+
+class Room extends Model {
   
   /**
    * The type of the room. Can be either "standard" or "premium".

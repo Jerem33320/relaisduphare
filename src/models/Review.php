@@ -1,14 +1,14 @@
 <?php
 
-class Review
+require_once 'src/models/Model.php';
+
+class Review extends Model
 {
-  private $id;
   private $author;
   private $email;
   private $message;
   private $mark = 5;
-  private $createdAt;
-
+ 
   /**
    * Factory method
    *
@@ -29,7 +29,9 @@ class Review
       ->setEmail($data['email'])
       ->setMark($data['mark'])
       ->setAuthor($data['name'])
-      ->setMessage($data['content']);
+      ->setMessage($data['content'])
+      ->setCreatedAt($data['createdAt'])
+      ->setUpdatedAt($data['updatedAt']);
 
     return $review;
   }
@@ -114,26 +116,6 @@ class Review
   }
 
   /**
-   * Get the value of createdAt
-   */
-  public function getCreatedAt()
-  {
-    return $this->createdAt;
-  }
-
-  /**
-   * Set the value of createdAt
-   *
-   * @return  self
-   */
-  public function setCreatedAt($createdAt)
-  {
-    $this->createdAt = $createdAt;
-
-    return $this;
-  }
-
-  /**
    * Get the value of email
    */
   public function getEmail()
@@ -166,22 +148,4 @@ class Review
     return 'http://i.pravatar.cc/48?img=' . $this->id;
   }
 
-  /**
-   * Get the value of id
-   */
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  /**
-   * Set the value of id
-   *
-   * @return  self
-   */
-  public function setId($id)
-  {
-    $this->id = $id;
-    return $this;
-  }
 }
