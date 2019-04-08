@@ -1,6 +1,6 @@
 <?php
 
-class Query
+abstract class Query
 {
   public static function findAll()
   {

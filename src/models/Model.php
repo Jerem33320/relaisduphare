@@ -1,6 +1,6 @@
 <?php
 
-class Model {
+abstract class Model {
 
   /**
    * The id of the instance
@@ -22,6 +22,8 @@ class Model {
    * @var \DateTime
    */
   protected $updatedAt;
+
+  abstract public static function hydrate(array $data);
 
   /**
    * Get the id of the instance

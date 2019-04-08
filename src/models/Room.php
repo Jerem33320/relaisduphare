@@ -47,6 +47,31 @@ class Room extends Model {
    */
   private $options = [];
 
+  public static function hydrate(array $data) {
+    $room = new Room();
+
+    // Système automatique (fonctionne uniquement si les champs de la base de 
+    // données correspondent aux attributs du modèle !!!)
+    foreach ($data as $key => $value) {
+      $setter = 'set' . ucfirst($key);
+      if (method_exists($room, $setter)) {
+        $room->$setter($value);
+      }
+    }
+    
+    // Sinon, on le fait à la main :)
+    // $room
+    //   ->setId($data['id'])
+    //   ->setType($data['type'])
+    //   ->setPrice($data['price'])
+    //   ->setBed($data['bed'])
+    //   ->setCover($data['cover'])
+    //   ->setContent($data['description'])
+    //   ->setCreatedAt($data['createdAt'])
+    //   ->setUpdatedAt($data['updatedAt']);
+
+    return $room;
+  }
 
   /**
    * Get the type of the room. Can be either "standard" or "premium".

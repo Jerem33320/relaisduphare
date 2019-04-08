@@ -1,13 +1,16 @@
 <a class="room" href="">
-  <img src="public/img/<?= $room['cover'] ?>" alt="" />
+  <img src="public/img/<?= $room->getCover() ?>" alt="" />
   <p class="room-name">
-    Chambre <?= $room['type'] ?><span>(<?= $room['options'] ?>)</span>
+    Chambre <?= $room->getType() ?>
+    <span>
+    (<?php //echo $room['options'] ?>)
+    </span>
   </p>
-  <p class="room-price"><?= $room['price'] ?> € / par nuit</p>
+  <p class="room-price"><?= $room->getPrice() ?> € / par nuit</p>
   <p class="room-bed">
-    <?php if ($room['bed'] === 'queen-size'): ?>
+    <?php if ($room->getBed() === 'queen-size'): ?>
       Lit Queen size (160 cm x 200 cm)
-    <?php elseif ($room['bed'] === 'king-size'): ?>
+    <?php elseif ($room->getBed() === 'king-size'): ?>
       Lit King size (180 cm x 200 cm)
     <?php endif ?>
   </p>
