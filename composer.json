@@ -2,7 +2,9 @@
   "name": "devweb-infrep/relais-du-phare",
   "description": "Un premier site en Orienté Objet !!!",
   "type": "project",
-  "require": {},
+  "require": {
+    "vlucas/phpdotenv": "^3.3"
+  },
   "autoload": {
     "psr-4": {
       "App\\": "src/"

@@ -62,7 +62,6 @@ class Database
     if (empty(self::$instance)) { 
       // si elle n'existe pas, on en crée une nouvelle
       // et on la stocke (pour les prochains appels de getInstance)
-
       if (empty($host) || empty($dbname) || empty($username)) {
         throw new Exception('Invalid parameters for Database constructor !!!');
       }
@@ -106,5 +105,3 @@ class Database
     return $this->pdo->query($sql);
   }
 }
-
-Database::getInstance('relais-du-phare', 'root', '');

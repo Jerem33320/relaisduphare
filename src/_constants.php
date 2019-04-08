@@ -1,3 +1,3 @@
 <?php
 
-define('BASE_URL', 'http://localhost/fs-relais-du-phare/');
+define('BASE_URL', $_ENV['APP_URL']);
