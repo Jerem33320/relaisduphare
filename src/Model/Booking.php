@@ -13,14 +13,14 @@ class Booking extends Model {
   /**
    * The arrival date
    *
-   * @var \Datetime
+   * @var \DateTime
    */
   private $arrivalDate;
   
   /**
    * The departure date
    *
-   * @var \Datetime
+   * @var \DateTime
    */
   private $departureDate;
   
@@ -75,7 +75,7 @@ class Booking extends Model {
    */ 
   public function setArrivalDate($arrivalDate)
   {
-    // Try to transform a Mysql date (string) into a valid instance of \DateTime
+    // Try to transform a Mysql date (string) into a valid instance of \DateTimeTime
     if (is_string($arrivalDate)) {
       $arrivalDate = \DateTime::createFromFormat('Y-m-d', $arrivalDate);
     }
@@ -113,7 +113,7 @@ class Booking extends Model {
    */ 
   public function setDepartureDate($departureDate)
   {
-    // Try to transform a Mysql date (string) into a valid instance of \DateTime
+    // Try to transform a Mysql date (string) into a valid instance of \DateTimeTime
     if (is_string($departureDate)) {
       $departureDate = \DateTime::createFromFormat('Y-m-d', $departureDate);
     }
@@ -139,6 +139,19 @@ class Booking extends Model {
   }
 
   /**
+   * Get the customer's id
+   *
+   * @return int
+   */ 
+  public function getCustomerId()
+  {
+    if ($this->customer instanceof Customer) {
+      return $this->customer->getId();
+    }
+    return $this->customer;
+  }
+
+  /**
    * Set the customer (id or instance)
    *
    * @param  int|Customer  $customer  The customer (id or instance)
@@ -159,6 +172,19 @@ class Booking extends Model {
    */ 
   public function getRoom()
   {
+    return $this->room;
+  }
+
+  /**
+   * Get the room's id
+   *
+   * @return int
+   */ 
+  public function getRoomId()
+  {
+    if ($this->room instanceof Room) {
+      return $this->room->getId();
+    }
     return $this->room;
   }
 
@@ -230,5 +256,20 @@ class Booking extends Model {
     $this->childrenCount = $childrenCount;
 
     return $this;
+  }
+
+  public static function hydrate(array $data) {
+
+    $instance = new Booking();
+
+    $instance
+      ->setArrivalDate($data['arrival'])
+      ->setDepartureDate($data['departure'])
+      ->setAdultsCount($data['adults_count'])
+      ->setChildrenCount($data['children_count'])
+      ->setRoom($data['room_id'])
+      ->setCustomer($data['customer_id']);
+
+    return $instance;
   }
 }
