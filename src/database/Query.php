@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Database;
+
+use \PDO;
+
 abstract class Query
 {
   public static function findAll()

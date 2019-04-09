@@ -1,7 +1,8 @@
 <?php
 
-require_once 'src/database/Query.php';
-require_once 'src/models/Room.php';
+namespace App\Database;
+
+use \App\Model\Room;
 
 class RoomQuery extends Query {
 

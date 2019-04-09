@@ -1,6 +1,8 @@
 <?php
 
-require_once 'src/models/Model.php';
+namespace App\Model;
+
+use \Exception;
 
 class Review extends Model
 {

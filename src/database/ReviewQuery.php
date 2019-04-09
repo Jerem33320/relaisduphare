@@ -1,7 +1,8 @@
 <?php
 
-require_once 'src/database/Query.php';
-require_once 'src/models/Review.php';
+namespace App\Database;
+
+use \App\Model\Review;
 
 class ReviewQuery extends Query
 {

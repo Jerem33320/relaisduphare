@@ -3,6 +3,10 @@
 // Chargement automatique des classes
 require __DIR__ . '/vendor/autoload.php';
 
+use \App\Database\Database;
+use \App\Database\RoomQuery;
+use \App\Database\ReviewQuery;
+
 // Chargement de l'environnement
 $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
@@ -14,9 +18,6 @@ $dotenv->required('DB_PASSWORD'); // can be empty !
 // Chargement des fichers importants pour l'application
 require_once 'src/_constants.php';
 require_once 'src/_utils.php';
-require_once 'src/database/Database.php';
-require_once 'src/database/ReviewQuery.php';
-require_once 'src/database/RoomQuery.php';
 require_once 'src/_data.php';
 
 // Connexion à la base de données

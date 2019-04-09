@@ -1,5 +1,9 @@
 <?php 
 
+namespace App\Database;
+
+use \PDO;
+
 /**
  * Représente une connexion à la base de données
  * 
