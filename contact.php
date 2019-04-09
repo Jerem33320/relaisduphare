@@ -1,9 +1,5 @@
 <?php
-
-
-
-require_once 'src/_constants.php';
-require_once 'src/_utils.php';
+require_once '__bootstrap.php';
 
 $pageTitle = 'Contact | Le Relais du Phare';
 $pageDescription = "Page de contact de l'hotel de phare. Par téléphone, par mail, comme vous voulez !";

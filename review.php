@@ -1,9 +1,9 @@
 <?php
 
-require_once 'src/_constants.php';
-require_once 'src/_utils.php';
-require_once 'src/database/Database.php';
-require_once 'src/database/ReviewQuery.php';
+require_once '__bootstrap.php';
+
+use App\Model\Review;
+use App\Database\ReviewQuery;
 
 if (isset($_GET['id'])) {
   // "mode" mise à jour d'une Review

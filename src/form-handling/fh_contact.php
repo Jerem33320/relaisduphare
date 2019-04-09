@@ -1,4 +1,7 @@
 <?php
+
+use App\Database\Database;
+
 // -----------------------------------------------------------------------------
 // Valider les données envoyées en $_POST
 // Stocker les erreurs de validation éventuelles
@@ -83,9 +86,6 @@ if (array_key_exists('message', $_POST)) {
 // on enregistre le message de contact en Base De Données
 if (!empty($_POST) && empty($errors)) {
 
-  // Connection à la base de données
-  require_once 'src/database/Database.php';
-
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
   $sql = "INSERT INTO `contact_message` (
@@ -97,7 +97,7 @@ if (!empty($_POST) && empty($errors)) {
     '" . $values['message'] . "'
     )";
 
-  $success = (boolean)$database->query($sql);
+  $success = (boolean)Database::getInstance()->query($sql);
 }
 
 // On reset le formulaire si besoin

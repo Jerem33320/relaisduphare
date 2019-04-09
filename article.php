@@ -1,10 +1,5 @@
 <?php
-
-require_once 'src/_constants.php';
-require_once 'src/_utils.php';
-require_once 'src/_data.php';
-
-
+require_once '__bootstrap.php';
 
 if (
   // Verifier qu'on demande une clé non nulle
@@ -26,7 +21,7 @@ $pageTitle = $article['title'];
 // $pageDescription = $article['abstract'];
 
 require_once 'src/includes/page-start.php';
-include 'src/includes/header.php'
+include 'src/includes/header.php';
 
 ?>
 
@@ -44,14 +39,8 @@ include 'src/includes/header.php'
 </section>
 
 <section>
-  <?php include 'src/includes/form-contact.php' ?>
-</section>
-
-<section>
 
   <div class="container">
-
-  
 
   <div class="row">
     <div class="col-lg-4">

@@ -1,6 +1,7 @@
 <?php
 
-require_once 'src/models/Review.php';
+use App\Database\ReviewQuery;
+use App\Model\Review;
 
 // -----------------------------------------------------------------------------
 // Valider les données envoyées en $_POST

@@ -1,8 +1,5 @@
 <?php
-
-require_once 'src/_constants.php';
-require_once 'src/_utils.php';
-require_once 'src/_data.php';
+require_once '__bootstrap.php';
 
 // Avant d'utiliser les variables contenues $_GET, on doit les vérifier
 if (
