@@ -1,6 +1,8 @@
 <?php
 require_once '__bootstrap.php';
 
+use \App\Database\RoomQuery;
+
 // Avant d'utiliser les variables contenues $_GET, on doit les vérifier
 if (
   !array_key_exists('type', $_GET) ||
@@ -18,12 +20,12 @@ $type = $_GET['type'];
 $number = (int) $_GET['number'];
 
 // Les paramètres sont validés, on peut aller chercher la chambre demandée
-$typedRooms = [];
-foreach ($rooms as $room) {
-  if ($room['type'] === $type) {
-    $typedRooms[] = $room; // push la chambre dans le tableau
-  }
+$typedRooms = RoomQuery::findByType($type);
+if (count($typedRooms) === 0) {
+  http_response_code(400);
+  exit('Error 400: Bad Parameters. Requested type doesn\'t exists.');
 }
+
 // on essaye de trouver la chambre demandée
 if (!array_key_exists($number - 1, $typedRooms)) {
   http_response_code(404);
@@ -38,7 +40,7 @@ $room = $typedRooms[$number - 1];
 
 
 // Debut de l'affichage (View)
-$pageTitle = 'Chambre ' . $room['type'] . ' ' . $number;
+$pageTitle = 'Chambre ' . $room->getType() . ' ' . $number;
 
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php' 
@@ -58,7 +60,7 @@ include 'src/includes/header.php'
     <div class="row">
       <div class="col-lg-4">
         <p>
-          <?= $room['content'] ?>
+          <?= $room->getContent() ?>
         </p>
       </div>
       <div class="col-lg-7 offset-lg-1">
