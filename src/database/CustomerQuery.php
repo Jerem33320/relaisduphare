@@ -30,7 +30,7 @@ class CustomerQuery extends Query
       :firstName,
       :email,
       :phone,
-      :gender,
+      :gender
     )";
 
     $statement = Database::getInstance()->getPDO()->prepare($sql);

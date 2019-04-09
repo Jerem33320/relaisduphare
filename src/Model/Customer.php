@@ -18,7 +18,7 @@ class Customer extends Model {
   /**
    * Customer's first name
    *
-   * @var string
+   * @var string|null
    */
   private $firstName;
 
@@ -50,7 +50,7 @@ class Customer extends Model {
    */ 
   public function getLastName()
   {
-    return $this->name;
+    return $this->lastName;
   }
 
   /**
@@ -87,7 +87,7 @@ class Customer extends Model {
    *
    * @return  self
    */ 
-  public function setFirstName(string $firstName)
+  public function setFirstName(string $firstName = null)
   {
     $this->firstName = $firstName;
 

@@ -37,6 +37,7 @@ if (!array_key_exists($number - 1, $typedRooms)) {
 // On stocke la chambre trouvée dans une variable !
 $room = $typedRooms[$number - 1];
 $booking = new Booking();
+$booking->setRoom($room);
 
 // Fin du traitement (Model)
 

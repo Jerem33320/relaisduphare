@@ -1,8 +1,10 @@
 <?php
 
+use App\Database\Database;
 use App\Database\BookingQuery;
 use App\Database\CustomerQuery;
 use App\Model\Booking;
+use App\Model\Customer;
 
 // -----------------------------------------------------------------------------
 // Valider les données envoyées en $_POST
@@ -19,14 +21,30 @@ if (array_key_exists('email', $_POST)) {
     $errors['email'] = "L'adresse email est obligatoire.";
   } else {
     try {
+      // On regarde si le client existe en base de données
       $customer = CustomerQuery::findOneByEmail($_POST['email']);
-      if (empty($customer)) {
-        // TODO create customer before
-      } else {
-        $booking->setCustomer($customer);
+      
+      // Et on le crée si besoin
+      if (empty($customer)) { 
+
+        // Créer une nouvelle instance du modèle
+        $customer = new Customer();
+        $customer->setEmail($_POST['email']);
+        $customer->setLastName(explode('@', $_POST['email'])[0]);
+
+        // L'enregistrer en base de données
+        CustomerQuery::create($customer);
+
+        // Mettre à jour l'instance avec les données toutes fraiches de la base 
+        // de données. (id, createdAt, ...)
+        $customer = CustomerQuery::findById(Database::getInstance()->getPDO()->lastInsertId());
       }
+      
+      // Définir le client pour cette réservation
+      $booking->setCustomer($customer);
+      
     } catch (Exception $e) {
-      $errors['name'] = $e->getMessage();
+      $errors['email'] = $e->getMessage();
     }
   }  
 }
@@ -66,8 +84,6 @@ if (array_key_exists('childrenCount', $_POST)) {
 // Si on a envoyé des données et qu'il n'y a pas d'erreur, 
 // on enregistre le message de contact en Base De Données
 if (!empty($_POST) && empty($errors)) {
-
-  $booking->setRoom($room);
 
   // On essaye d'insérer les données en BDD
   // et on stocke le résultat (true | false) dans une variable 
