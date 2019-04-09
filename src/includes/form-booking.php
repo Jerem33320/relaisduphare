@@ -40,7 +40,7 @@ require_once 'src/form-handling/fh_booking.php';
     <input
       type="date"
       name="arrival"
-      value="<?= $booking->getArrivalDate('Y-d-m') ?>"
+      value="<?= $booking->getArrivalDate('Y-m-d') ?>"
     />
     <?php if (array_key_exists('arrival', $errors)) : ?>
       <div class="form-error">
@@ -54,7 +54,7 @@ require_once 'src/form-handling/fh_booking.php';
     <input
     type="date"
     name="departure"
-    value="<?= $booking->getDepartureDate('Y-d-m') ?>"
+    value="<?= $booking->getDepartureDate('Y-m-d') ?>"
     />
     <?php if (array_key_exists('departure', $errors)) : ?>
       <div class="form-error">

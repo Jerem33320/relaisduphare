@@ -82,7 +82,7 @@ class Booking extends Model {
 
     // Throw if invalid date
     if (!($arrivalDate instanceof \DateTime)) {
-      throw new Exception('Invalid date for arrivalDate.');
+      throw new \Exception('Invalid date for arrivalDate.');
     }
 
     $this->arrivalDate = $arrivalDate;
@@ -120,7 +120,7 @@ class Booking extends Model {
 
     // Throw if invalid date
     if (!($departureDate instanceof \DateTime)) {
-      throw new Exception('Invalid date for departureDate.');
+      throw new \Exception('Invalid date for departureDate.');
     }
 
     $this->departureDate = $departureDate;

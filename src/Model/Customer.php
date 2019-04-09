@@ -190,4 +190,18 @@ class Customer extends Model {
 
     return $this;
   }
+
+  public static function hydrate(array $data) {
+
+    $customer = new Customer();
+
+    foreach ($data as $key => $value) {
+      $setter = 'set' . ucfirst($key);
+      if (method_exists($customer, $setter)) {
+        $customer->$setter($value);
+      }
+    }
+
+    return $customer;
+  }
 }
