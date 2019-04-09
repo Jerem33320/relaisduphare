@@ -2,6 +2,7 @@
 require_once '__bootstrap.php';
 
 use \App\Database\RoomQuery;
+use \App\Model\Booking;
 
 // Avant d'utiliser les variables contenues $_GET, on doit les vérifier
 if (
@@ -35,6 +36,7 @@ if (!array_key_exists($number - 1, $typedRooms)) {
 
 // On stocke la chambre trouvée dans une variable !
 $room = $typedRooms[$number - 1];
+$booking = new Booking();
 
 // Fin du traitement (Model)
 
@@ -58,18 +60,28 @@ include 'src/includes/header.php'
     </div>
 
     <div class="row">
-      <div class="col-lg-4">
-        <p>
-          <?= $room->getContent() ?>
-        </p>
-      </div>
-      <div class="col-lg-7 offset-lg-1">
-        <div class="welcome-img-container">
+      <div class="col-lg-8">
+
+      <div class="welcome-img-container">
           <img
             src="public/img/img_1.jpg"
             alt="Une chambre d'hôtel spacieuse et luxueuse"
           />
         </div>
+        <p>
+          <?= $room->getContent() ?>
+        </p>
+      </div>
+      <div class="col-lg-4">
+
+        <header>
+          <h2>
+            Réserver cette chambre
+          </h2>
+        </header>
+
+        <?php include 'src/includes/form-booking.php' ?>
+        
       </div>
     </div>
 
@@ -97,6 +109,9 @@ include 'src/includes/header.php'
         <?php endif ?>
       </div>
     </div>
+
+
+      
   </div> <!-- //.container -->
 </section>
 

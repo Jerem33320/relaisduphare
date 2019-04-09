@@ -59,7 +59,7 @@ class Booking extends Model {
    */ 
   public function getArrivalDate($format = null)
   {
-    if (!empty($format)) {
+    if (!empty($format) && !empty($this->arrivalDate)) {
       return $this->arrivalDate->format($format);
     }
     
@@ -97,7 +97,7 @@ class Booking extends Model {
    */ 
   public function getDepartureDate($format = null)
   {
-    if (!empty($format)) {
+    if (!empty($format) && !empty($this->departureDate)) {
       return $this->departureDate->format($format);
     }
     
