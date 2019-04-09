@@ -6,7 +6,7 @@ use \App\Database\RoomQuery;
 use \App\Database\ReviewQuery;
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
-$rooms = RoomQuery::findAll();
+$rooms = RoomQuery::findAllWithTypes();
 $reviews = ReviewQuery::findBestMarks(3);
 
 require_once 'src/includes/page-start.php';
