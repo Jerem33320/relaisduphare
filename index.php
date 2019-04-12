@@ -4,6 +4,7 @@ require_once '__bootstrap.php';
 
 use \App\Database\RoomQuery;
 use \App\Database\ReviewQuery;
+use \App\Database\BookingQuery;
 
 $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 $rooms = RoomQuery::findAllWithTypes();

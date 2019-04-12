@@ -259,7 +259,7 @@ class Booking extends Model {
   }
 
   public static function hydrate(array $data) {
-
+var_dump($data);
     $instance = new Booking();
 
     $instance

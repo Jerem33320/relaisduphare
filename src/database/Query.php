@@ -58,10 +58,10 @@ abstract class Query
   {
     $model = static::MODEL;
 
-    $reviews = [];
+    $models = [];
     foreach ($data as $row) {
-      $reviews[] = $model::hydrate($row);
+      $models[] = $model::hydrate($row);
     }
-    return $reviews;
+    return $models;
   }
 }
