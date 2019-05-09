@@ -10,6 +10,9 @@ class BookingQuery extends Query
   public const TABLE = 'booking';
   public const MODEL = Booking::class;
 
+
+
+
   /**
    * Determines wheter a room is available on the given period
    * 
@@ -24,15 +27,10 @@ class BookingQuery extends Query
   public static function isRoomFreeBetweenDates($room, $arrival, $departure) {
 
     $sql = "SELECT * 
-      FROM `booking` 
-      JOIN room 
-        ON booking.room_id = room.id 
-      WHERE (
-        arrival < :departure AND arrival > :arrival 
-        OR 
-        departure BETWEEN :arrival AND :departure
-      ) 
-      AND room_id = :room ";
+      FROM `booking`
+      WHERE arrival < :departure
+        AND departure > :arrival 
+        AND room_id = :room";
 
     $statement = Database::getInstance()->getPDO()->prepare($sql);
     $statement->bindValue(':arrival', $arrival);
@@ -93,6 +91,18 @@ class BookingQuery extends Query
 
   public static function create(Booking $booking)
   {
+    // Validation des données: disponibilité de la chambre
+    $isAvailable = self::isRoomFreeBetweenDates(
+          $booking->getRoomId(),
+          $booking->getArrivalDate('Y-m-d'),
+          $booking->getDepartureDate('Y-m-d')
+      );
+
+    if (!$isAvailable) {
+        throw new \Exception('ROOM_NOT_AVAILABLE');
+    }
+
+    // Insertion en BDD
     $sql = "INSERT INTO " . self::TABLE . " (arrival, departure, customer_id, room_id, adults_count, children_count) 
     VALUES (
       :arrival,

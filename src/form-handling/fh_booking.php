@@ -117,6 +117,14 @@ if (!empty($_POST) && empty($errors)) {
       default:
         throw $e;
     }
+  } catch (Exception $e) {
+
+      if ($e->getMessage() === "ROOM_NOT_AVAILABLE") {
+          $errors['room'] = 'La chambre n\'est pas dispo sur ces dates :(';
+      } else {
+          // rethrow error
+          throw $e;
+      }
   }
 }
 

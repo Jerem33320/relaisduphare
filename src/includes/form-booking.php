@@ -13,9 +13,14 @@ require_once 'src/form-handling/fh_booking.php';
   </div>
 
   <?php endif ?>
+
   <?php if (!empty($errors)) : ?>
   <div class="alert form-error" style="text-align: center;">
-    Le formulaire contient des erreurs !
+    <?php if (!empty($errors['room'])) : ?>
+        <?= $errors['room'] ?>
+    <?php else: ?>
+        Le formulaire contient des erreurs !
+    <?php endif ?>
   </div>
   <?php endif ?>
 
