@@ -10,7 +10,7 @@ $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 $rooms = RoomQuery::findAllWithTypes();
 $reviews = ReviewQuery::findBestMarks(3);
 
-$results = [];
+require_once 'src/form-handling/fh_search.php';
 
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php';
@@ -32,15 +32,15 @@ include 'src/includes/header.php';
               <div class="row">
                   <div class="col col-lg-3">
                       <div class="form-group">
-                          <label for="check-in">Arrivée</label>
-                          <input id="check-in" name="check-in" type="date" />
+                          <label for="arrival">Arrivée</label>
+                          <input id="arrival" name="arrival" type="date" />
                       </div>
                   </div>
 
                   <div class="col col-lg-3">
                       <div class="form-group">
-                          <label for="check-out">Départ</label>
-                          <input id="check-out" name="check-out" type="date" />
+                          <label for="departure">Départ</label>
+                          <input id="departure" name="departure" type="date" />
                       </div>
                   </div>
 
