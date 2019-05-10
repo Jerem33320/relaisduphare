@@ -10,6 +10,8 @@ $pageTitle = 'Le Relais du Phare : Hôtel 5 étoiles';
 $rooms = RoomQuery::findAllWithTypes();
 $reviews = ReviewQuery::findBestMarks(3);
 
+$results = [];
+
 require_once 'src/includes/page-start.php';
 include 'src/includes/header.php';
 
@@ -25,53 +27,73 @@ include 'src/includes/header.php';
 
 <section id="section-welcome">
   <div class="container">
-    <form id="registration-form" action="">
-      <div class="row">
-        <div class="col col-lg-3">
-          <div class="form-group">
-            <label for="check-in">Arrivée</label>
-            <input id="check-in" name="check-in" type="date" />
-          </div>
-        </div>
+      <div id="registration-form">
+          <form action="" method="post">
+              <div class="row">
+                  <div class="col col-lg-3">
+                      <div class="form-group">
+                          <label for="check-in">Arrivée</label>
+                          <input id="check-in" name="check-in" type="date" />
+                      </div>
+                  </div>
 
-        <div class="col col-lg-3">
-          <div class="form-group">
-            <label for="check-out">Départ</label>
-            <input id="check-out" name="check-out" type="date" />
-          </div>
-        </div>
+                  <div class="col col-lg-3">
+                      <div class="form-group">
+                          <label for="check-out">Départ</label>
+                          <input id="check-out" name="check-out" type="date" />
+                      </div>
+                  </div>
 
-        <div class="col col-lg-auto">
-          <div class="form-group">
-            <label for="adults">Adultes</label>
-            <input
-              id="adults"
-              name="adults"
-              type="number"
-              min="0"
-              value="2"
-            />
-          </div>
-        </div>
+                  <div class="col col-lg-auto">
+                      <div class="form-group">
+                          <label for="adults">Adultes</label>
+                          <input
+                                  id="adults"
+                                  name="adults"
+                                  type="number"
+                                  min="0"
+                                  value="2"
+                          />
+                      </div>
+                  </div>
 
-        <div class="col col-lg-auto">
-          <div class="form-group">
-            <label for="children">Enfants</label>
-            <input
-              id="children"
-              name="children"
-              type="number"
-              min="0"
-              value="0"
-            />
-          </div>
-        </div>
+                  <div class="col col-lg-auto">
+                      <div class="form-group">
+                          <label for="children">Enfants</label>
+                          <input
+                                  id="children"
+                                  name="children"
+                                  type="number"
+                                  min="0"
+                                  value="0"
+                          />
+                      </div>
+                  </div>
 
-        <div class="col col-lg-3">
-          <input type="submit" class="btn btn-primary" />
-        </div>
+                  <div class="col col-lg-3">
+                      <input type="submit" class="btn btn-primary" />
+                  </div>
+              </div>
+          </form>
+
+          <!-- Resultats de la recherche -->
+          <?php if (!empty($_POST)): ?>
+              <?php if (empty($results)): ?>
+                <div class="no-result">
+                    Aucune chambre n'est disponible pendant cette période.
+                </div>
+              <?php else: ?>
+                  <ul>
+                  <?php foreach ($results as $room): ?>
+                    <li>
+                        <?php include 'src/includes/search-result.php'?>
+                    </li>
+                  <?php endforeach; ?>
+                  </ul>
+              <?php endif ?>
+          <?php endif ?>
       </div>
-    </form>
+
     <div class="row">
       <div class="col-lg-4">
         <h2>Bienvenue !</h2>
