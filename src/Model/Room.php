@@ -5,7 +5,12 @@ namespace App\Model;
 use \Exception;
 
 class Room extends Model {
-  
+
+
+  private $name;
+
+  private $slug;
+
   /**
    * The type of the room. Can be either "standard" or "premium".
    *
@@ -64,6 +69,8 @@ class Room extends Model {
     // Sinon, on le fait à la main :)
     $room
       ->setId($data['id'])
+      ->setName($data['name'])
+      ->setSlug($data['slug'])
       ->setType($data['type'])
       ->setPrice($data['price'])
       ->setBed($data['bed'])
@@ -74,6 +81,44 @@ class Room extends Model {
 
     return $room;
   }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     * @return Room
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     * @return Room
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+
 
   /**
    * Get the type of the room. Can be either "standard" or "premium".

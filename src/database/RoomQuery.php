@@ -42,4 +42,31 @@ class RoomQuery extends Query {
   
     return self::map($data);
   }
+
+    /**
+     * Find the room with the given slug
+     *
+     * @param string $slug
+     * @return Room
+     */
+    public static function findOneBySlug(string $slug) {
+
+        $sql = "SELECT room.*, room_type.label as type " .
+            "FROM " . static::TABLE . " JOIN room_type ON room.type = room_type.id " .
+            "WHERE room.slug=:slug";
+
+        $statement = Database::getInstance()->getPDO()->prepare($sql);
+        $statement->bindValue(':slug', $slug);
+        $statement->execute();
+
+        $data = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($data)) return null;
+
+        $model = static::MODEL;
+
+        $room = $model::hydrate($data);
+
+        return $room;
+    }
 }

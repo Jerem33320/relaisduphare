@@ -11,7 +11,8 @@ RewriteRule ^temoigner$ review.php
 RewriteRule ^review/([0-9]+)$ review.php?id=$1
 
 RewriteRule ^blog/article/([0-9]+)$ article.php?article=$1
-RewriteRule ^chambres/(standard|premium)/([0-9]+)$ room.php?type=$1&number=$2
+# RewriteRule ^chambres/(standard|premium)/([0-9]+)$ room.php?type=$1&number=$2
+RewriteRule ^chambres/([\w]+)$ room.php?slug=$1
 
 # Gestion des erreurs
 ErrorDocument 404 /fs-relais-du-phare/404.php
