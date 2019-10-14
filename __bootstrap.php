@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Chargement automatique des classes
 require __DIR__ . '/vendor/autoload.php';
 
